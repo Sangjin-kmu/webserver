@@ -30,3 +30,71 @@ from pybo import views
 결과 화면  
 <img width="438" alt="스크린샷 2025-03-12 오후 2 34 35" src="https://github.com/user-attachments/assets/3c345cab-8be9-4a5f-b4bc-7104185516c6" />  
 
+
+## 과제2  
+
+config urls.py 과제 코드  
+```python
+from django.contrib import admin
+from django.urls import include, path
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('pybo/', include('pybo.urls')),
+]
+```  
+lpybo views.py 과제 코드
+```python
+from django.http import HttpResponse
+
+
+def index(request):
+    return HttpResponse("안녕하세요 pybo에 오신것을 환영합니다.")
+```
+
+해당 과제코드를 보면 include('pybo.urls')를 통해 pybo파일의 urls.py파일을 따른다는 뜻이다.  
+그래서 pybo에서 urls.py의 파일을 열어보면  
+
+```python
+from django.urls import path
+
+from . import views
+
+urlpatterns = [
+    path('', views.index),
+]
+
+```  
+이런식으로 config에 사용할 코드를 각 사이트에 맞게 전담해서 분배할수있게 만들 수 있다.  
+그래서 실행하면 아래 사진처럼 127.0.0.1:8000/pybo/ 사이트에선 문제 없이 잘뜬다.  
+<img width="350" alt="image" src="https://github.com/user-attachments/assets/3a4504b1-53a4-429d-9bb9-a1ea769c518f" />
+
+하지만 과제에서 요구하는 내용은 /pybo/가 안붙은 127.0.0.1:8000에서도 해당 views의 내용을 볼수있는 방법을 구해야한다.  
+<img width="641" alt="image" src="https://github.com/user-attachments/assets/8163ce2b-1a22-45f8-bf86-86fc633c803b" />
+
+수업때 배운 간단한 코드 한줄만 추가하면 쉽게 해결이 된다.
+```python
+path('', views.index),
+```  
+config urls.py 의 urlpatterns 에 해당 코드를 추가한다. 하지만 추가만 하면 views의 index 내용을 읽을 수 없으니,  
+```python
+from pybo import views
+```
+해당 코드를 통해 views.py 파일 코드를 가져와야한다.  
+그래서 최종완성 코드는 아래 처럼 나온다.  
+```python
+from django.contrib import admin
+from django.urls import include, path
+from pybo import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('pybo/', include('pybo.urls')), # include를 통해 전담 URL로 가라.
+    path('', views.index),
+]
+```
+ ![image](https://github.com/user-attachments/assets/515a4c3f-0da8-410e-9ee4-675bfd889df6)
+
+사진 처럼 문제 없이 두 주소다 내용이 뜬다.
+
+

@@ -95,6 +95,6 @@ urlpatterns = [
 ```
  ![image](https://github.com/user-attachments/assets/515a4c3f-0da8-410e-9ee4-675bfd889df6)
 
-사진 처럼 문제 없이 두 주소다 내용이 뜬다.
+사진 처럼 문제 없이 두 주소다 내용이 뜬다.  
 
 

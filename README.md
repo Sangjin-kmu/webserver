@@ -99,11 +99,11 @@ urlpatterns = [
 
 ## 과제3  
 
-로그인 전 127.0.0.1:8020 화면  
+**로그인 전 127.0.0.1:8020 화면**  
 
 <img width="1149" alt="스크린샷 2025-03-26 오후 2 17 03" src="https://github.com/user-attachments/assets/ed650896-a46c-404b-93e7-5f7ac4865f69" />  
   
-user1 / test1234 로 로그인 후 127.0.0.1:8020 화면  
+**user1 / test1234 로 로그인 후 127.0.0.1:8020 화면**  
 
 <img width="1149" alt="스크린샷 2025-03-26 오후 2 16 49" src="https://github.com/user-attachments/assets/4bd7acae-809a-4818-b5cd-79168ab9da8a" />
 
@@ -121,18 +121,18 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ```
   
-깃허브 코드 화면  
+**깃허브 코드 화면**  
 
 <img width="1068" alt="스크린샷 2025-03-26 오후 1 44 12" src="https://github.com/user-attachments/assets/a0534c98-4842-457d-9241-59af46ea8b0d" />  
 
 ### 노션에는 어떤걸 코드를 업로드 하는지 몰라 모든 코드 파일을 업로드 및 질문목록 Bootstrap 카드(Card) 스타일로 정리한 코드도 따로 업로드 하였습니다.  
 
   
-노션 코드 업로드 화면  
+**노션 코드 업로드 화면**  
   
 <img width="1119" alt="스크린샷 2025-03-26 오후 2 18 26" src="https://github.com/user-attachments/assets/8bc01c83-1adf-4352-aa4f-9e3a2d38405d" />  
 
-노션 질문목록 Bootstrap 카드(Card) 스타일로 정리 코드 화면  
+**노션 질문목록 Bootstrap 카드(Card) 스타일로 정리 코드 화면**  
 
  <img width="1118" alt="스크린샷 2025-03-26 오후 2 25 14" src="https://github.com/user-attachments/assets/a50c7c82-57da-48a9-b4bf-2b131e45eb0f" />  
  

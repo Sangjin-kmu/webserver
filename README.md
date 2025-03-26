@@ -120,5 +120,5 @@ user1 / test1234 로 로그인 후 127.0.0.1:8020 화면
 
 노션 질문목록 Bootstrap 카드(Card) 스타일로 정리 코드 화면  
 
-<img width="828" alt="스크린샷 2025-03-26 오후 2 22 55" src="https://github.com/user-attachments/assets/705289a9-45dd-4519-92e8-3ff31db8ccf8" />  
-  
+ <img width="1118" alt="스크린샷 2025-03-26 오후 2 25 14" src="https://github.com/user-attachments/assets/a50c7c82-57da-48a9-b4bf-2b131e45eb0f" />  
+ 

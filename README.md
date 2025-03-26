@@ -139,5 +139,5 @@ LOGOUT_REDIRECT_URL = '/'
   
  <img width="1118" alt="스크린샷 2025-03-26 오후 2 25 14" src="https://github.com/user-attachments/assets/a50c7c82-57da-48a9-b4bf-2b131e45eb0f" />  
  
-깃허브 주소 : 
-노션 주소 : 
+깃허브 주소 : https://github.com/Sangjin-kmu/webserver  
+노션 주소 : https://www.notion.so/20213039-3-1c0103a1286a80d195f6c9a0b738b7b7  

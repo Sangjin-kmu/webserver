@@ -100,39 +100,42 @@ urlpatterns = [
 ## 과제3  
 
 **로그인 전 127.0.0.1:8020 화면**  
-
+  
 <img width="1149" alt="스크린샷 2025-03-26 오후 2 17 03" src="https://github.com/user-attachments/assets/ed650896-a46c-404b-93e7-5f7ac4865f69" />  
   
 **user1 / test1234 로 로그인 후 127.0.0.1:8020 화면**  
-
+  
 <img width="1149" alt="스크린샷 2025-03-26 오후 2 16 49" src="https://github.com/user-attachments/assets/4bd7acae-809a-4818-b5cd-79168ab9da8a" />
-
+  
 **여기서 과제에 주어진 코드만 이용하면 로그인시 127.0.0.1:8020/account/profile 주소로 넘어가고 logout을 하면 어드민(관리자) 페이지로 넘어가는 버그가 있다.**  
+  
 로그인  
 <img width="1063" alt="스크린샷 2025-03-26 오후 2 35 48" src="https://github.com/user-attachments/assets/c7e566d2-a303-4397-9983-54bf9d603029" />  
+  
 로그아웃  
 <img width="392" alt="스크린샷 2025-03-26 오후 2 35 28" src="https://github.com/user-attachments/assets/e40dcaf3-d3a5-4e0d-bbf0-4ee077669f15" />  
-
+  
 **그래서 qna_site/setting.py 에 2줄을 추가하여 로그인 로그아웃시 바로 127.0.0.1:8020으로 넘어가게 코드를 수정하였다.**  
-
+  
   <img width="283" alt="스크린샷 2025-03-26 오후 2 37 25" src="https://github.com/user-attachments/assets/318604a5-6844-49ab-b778-4b9032b18402" />  
+  
 ```python
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 ```
   
 **깃허브 코드 화면**  
-
+  
 <img width="1068" alt="스크린샷 2025-03-26 오후 1 44 12" src="https://github.com/user-attachments/assets/a0534c98-4842-457d-9241-59af46ea8b0d" />  
-
+  
 ### 노션에는 어떤걸 코드를 업로드 하는지 몰라 모든 코드 파일을 업로드 및 질문목록 Bootstrap 카드(Card) 스타일로 정리한 코드도 따로 업로드 하였습니다.  
 
   
 **노션 코드 업로드 화면**  
   
 <img width="1119" alt="스크린샷 2025-03-26 오후 2 18 26" src="https://github.com/user-attachments/assets/8bc01c83-1adf-4352-aa4f-9e3a2d38405d" />  
-
+  
 **노션 질문목록 Bootstrap 카드(Card) 스타일로 정리 코드 화면**  
-
+  
  <img width="1118" alt="스크린샷 2025-03-26 오후 2 25 14" src="https://github.com/user-attachments/assets/a50c7c82-57da-48a9-b4bf-2b131e45eb0f" />  
  

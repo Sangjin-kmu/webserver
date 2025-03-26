@@ -106,4 +106,6 @@ user1 / test1234 로 로그인 후 127.0.0.1:8000 화면
 
 <img width="1150" alt="스크린샷 2025-03-26 오후 1 40 49" src="https://github.com/user-attachments/assets/923502fa-8c50-4073-9308-bb3842a3fac1" />  
 
-깃허브 코드 화면
+깃허브 코드 화면  
+
+<img width="1068" alt="스크린샷 2025-03-26 오후 1 44 12" src="https://github.com/user-attachments/assets/a0534c98-4842-457d-9241-59af46ea8b0d" />  

@@ -1,0 +1,26 @@
+{% extends 'qa/base.html' %}
+{% block content %}
+<h2>All Questions</h2>
+<div class="d-flex justify-content-end mb-3">
+  <a href="{% url 'ask_question' %}" class="btn btn-primary">Ask Question</a>
+</div>
+<div class="row row-cols-1 row-cols-md-2 g-4">
+  {% for question in questions %}
+    <div class="col">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="{% url 'question_detail' question.pk %}">{{ question.title }}</a>
+          </h5>
+          <p class="card-text text-truncate">{{ question.content }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          By {{ question.author.username }} | {{ question.created_at|date:"Y-m-d H:i" }}
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <p>No questions yet.</p>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -97,4 +97,13 @@ urlpatterns = [
 
 사진 처럼 문제 없이 두 주소다 내용이 뜬다.  
 
+## 과제3
+로그인 전 127.0.0.1:8000 화면  
 
+<img width="1152" alt="스크린샷 2025-03-26 오후 1 40 23" src="https://github.com/user-attachments/assets/70098397-deaf-4f77-bf27-864842ca4207" />  
+
+user1 / test1234 로 로그인 후 127.0.0.1:8000 화면  
+
+<img width="1150" alt="스크린샷 2025-03-26 오후 1 40 49" src="https://github.com/user-attachments/assets/923502fa-8c50-4073-9308-bb3842a3fac1" />  
+
+깃허브 코드 화면

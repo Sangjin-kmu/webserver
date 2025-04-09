@@ -249,13 +249,13 @@ class Book(models.Model):
   
 **shell 사용예시 및 출력예시**  
 1. 전체 책 조회  
-<img width="282" alt="스크린샷 2025-04-09 오후 2 14 50" src="https://github.com/user-attachments/assets/13ec65a7-5475-4529-bad8-481880bcc721" />
-2. 특정 저자 책만 조회
+<img width="282" alt="스크린샷 2025-04-09 오후 2 14 50" src="https://github.com/user-attachments/assets/13ec65a7-5475-4529-bad8-481880bcc721" />  
+2. 특정 저자 책만 조회  
 <img width="444" alt="스크린샷 2025-04-09 오후 2 16 08" src="https://github.com/user-attachments/assets/8d0aec97-6eef-4014-9c97-bd210f9ec916" />  
-3. 제목 키워드로 검색
+3. 제목 키워드로 검색  
 <img width="442" alt="스크린샷 2025-04-09 오후 2 17 51" src="https://github.com/user-attachments/assets/02fd1bfb-d9c1-4ab2-b0cb-348ef6866a8e" />  
-4. 제목순 정렬
+4. 제목순 정렬  
 <img width="379" alt="스크린샷 2025-04-09 오후 2 27 01" src="https://github.com/user-attachments/assets/d6f1ce48-42c7-4757-86c1-117b11dbaac8" />  
-
+  
   
 깃허브 주소 : 

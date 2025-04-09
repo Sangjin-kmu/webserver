@@ -202,3 +202,60 @@ def write_post(request):
 
 
   깃허브 주소 : https://github.com/Sangjin-kmu/webserver/tree/csrf
+
+## 과제4  
+
+**books/models.py 코드 수정**  
+  
+```python
+from django.db import models
+from django.db.models import QuerySet
+
+class Book(models.Model):
+  title = models.CharField(max_length=200)
+  author = models.CharField(max_length=100)
+  
+  def __str__(self):
+    return f"{self.title} by {self.author}"
+  
+  @classmethod
+  def get_all_books(cls) -> QuerySet['Book']: 
+    """
+    전체 책 목록 반환
+    """
+    return cls.objects.all()
+  
+  @classmethod
+  def get_books_by_author(cls, author_name) -> QuerySet['Book']: 
+    """
+   특정 저자의 책만 반환
+    """
+    return cls.objects.filter(author__iexact = author_name) 
+  @classmethod
+  def get_books_by_title_keyword(cls, keyword) -> QuerySet['Book']:
+    """
+    제목에 키워드가 포함된 책 반환 (대소문자 구분 없이)
+    """
+    return cls.objects.filter(title__icontains = keyword)
+  @classmethod
+  def get_books_ordered_by_title(cls) -> QuerySet['Book']:
+    """
+    제목 순으로 정렬된 책 목록 반환
+    """
+    return cls.objects.all().order_by('title') 
+
+```  
+빈곳을 채워 넣은 후 코드  
+  
+**shell 사용예시 및 출력예시**  
+1. 전체 책 조회  
+<img width="282" alt="스크린샷 2025-04-09 오후 2 14 50" src="https://github.com/user-attachments/assets/13ec65a7-5475-4529-bad8-481880bcc721" />
+2. 특정 저자 책만 조회
+<img width="444" alt="스크린샷 2025-04-09 오후 2 16 08" src="https://github.com/user-attachments/assets/8d0aec97-6eef-4014-9c97-bd210f9ec916" />  
+3. 제목 키워드로 검색
+<img width="442" alt="스크린샷 2025-04-09 오후 2 17 51" src="https://github.com/user-attachments/assets/02fd1bfb-d9c1-4ab2-b0cb-348ef6866a8e" />  
+4. 제목순 정렬
+<img width="379" alt="스크린샷 2025-04-09 오후 2 27 01" src="https://github.com/user-attachments/assets/d6f1ce48-42c7-4757-86c1-117b11dbaac8" />  
+
+  
+깃허브 주소 : 

@@ -53,7 +53,7 @@
   
 <img width="919" alt="스크린샷 2025-04-30 오후 1 56 29" src="https://github.com/user-attachments/assets/06ef6d12-b118-4615-8f8d-5c605ccc4c05" />  
   
-**GET요청***  
+**GET요청**  
 GET으로 123을 요청 하였다.  
   
 <img width="927" alt="스크린샷 2025-04-30 오후 1 56 38" src="https://github.com/user-attachments/assets/10627099-bf1a-4e92-a036-dcdd64782f22" />  
@@ -107,4 +107,4 @@ def file_upload_view(request):
   
 <img width="398" alt="스크린샷 2025-04-30 오후 1 55 45" src="https://github.com/user-attachments/assets/de09830c-eb85-4ea0-aeab-111ac83c253d" />  
   
-깃허브 주소 : 
+깃허브 주소 : https://github.com/Sangjin-kmu/webserver/tree/request-info

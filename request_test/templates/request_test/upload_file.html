@@ -1,0 +1,14 @@
+<h2>📤 파일 업로드</h2>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <label>제목:</label><br>
+  <input type="text" name="title"><br><br>
+  <label>파일 선택:</label><br>
+  <input type="file" name="file"><br><br>
+  <button type="submit">업로드</button>
+</form>
+{% if uploaded_file_url %} 
+  <h3>업로드 결과</h3>
+  <p><strong>제목:</strong> {{ title }}</p>
+  <p><a href="{{ uploaded_file_url }}">업로드된 파일 보기</a></p>
+{% endif %}

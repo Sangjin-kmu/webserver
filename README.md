@@ -41,6 +41,29 @@ urlpatterns = [
     path('home/', views.home_view, name='home'), # 여기에 동작코드를 작성하세요(1점)
 ]
 ```
+
+**수정한 templates/accounts/login.html** 
+  
+```html
+<h2>로그인</h2>
+<form method="post">
+  {% csrf_token %} 
+  <input type="text" name="username" placeholder="아이디" required><br>
+  <input type="password" name="password" placeholder="비밀번호" required><br>
+  <button type="submit">로그인</button>
+</form>
+
+{% for message in messages %}
+  <p style="color:red;">{{ message }}</p>
+{% endfor %}
+```  
+  
+**수정한 templates/accounts/home.html** 
+
+```html
+<h2>환영합니다, {{ user.username }}님!</h2>
+<p><a href="{% url 'logout' %}">로그아웃</a></p> 
+```
   
 **로그인 화면**  
 

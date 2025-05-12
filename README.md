@@ -52,7 +52,8 @@ urlpatterns = [
 
   <img width="1194" alt="스크린샷 2025-05-12 오후 2 01 51" src="https://github.com/user-attachments/assets/0f936684-6966-485d-a785-6d37e47c30c5" />  
 
-HTTP 201 Created가 뜨면서 정상적으로 내용이 나온다.
+HTTP 201 Created가 뜨면서 정상적으로 내용이 나온다.  
+  
 **비정상 응답**  
   
   <img width="1175" alt="스크린샷 2025-05-12 오후 2 01 59" src="https://github.com/user-attachments/assets/dbc938a5-940b-4d5c-9aa6-476cce179d68" />  

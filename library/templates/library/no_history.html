@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>대출 이력 없음</title>
+</head>
+<body>
+  <h1>📕 대출 이력이 없습니다</h1>
+  <p>책 '{{ book.title }}'에는 대출 기록이 없습니다.</p>
+  <p class="code">응답 코드: 204</p>
+  <p><a href="{% url 'library:book_list' %}">← 책 목록으로</a></p>
+</body>
+</html>

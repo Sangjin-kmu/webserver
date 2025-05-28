@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2>🔐 로그인</h2>
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="아이디" required><br>
+    <input type="password" name="password" placeholder="비밀번호" required><br>
+    <button type="submit">로그인</button>
+</form>
+{% for message in messages %}
+    <p style="color:red;">{{ message }}</p>
+{% endfor %}
+{% endblock %}

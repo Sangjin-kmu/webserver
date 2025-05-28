@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>📝 회원가입</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">가입하기</button>
+</form>
+{% endblock %}

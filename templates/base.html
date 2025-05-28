@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>도서 웹사이트</title>
+</head>
+<body>
+    <h1>📘 도서 웹사이트</h1>
+
+    <!-- 🔗 상단 네비게이션 -->
+    <nav>
+        <a href="/">책 목록</a> |
+        <a href="/add/">책 등록</a> |
+        <a href="/request-info/">요청정보</a> |
+        {% if user.is_authenticated %}
+            <a href="/home/">내 홈</a> |
+            <a href="/logout/">로그아웃</a>
+        {% else %}
+            <a href="/login/">로그인</a> |
+            <a href="/signup/">회원가입</a>
+        {% endif %}
+    </nav>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

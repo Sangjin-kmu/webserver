@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2>📚 책 목록</h2>
+<form method="get">
+    <input type="text" name="q" value="{{ keyword }}" placeholder="제목 검색">
+    <select name="order">
+        <option value="">정렬 없음</option>
+        <option value="title" {% if order == 'title' %}selected{% endif %}>제목순</option>
+    </select>
+    <button type="submit">검색</button>
+</form>
+<ul>
+    {% for book in books %}
+        <li>{{ book.title }} by {{ book.author }}</li>
+    {% empty %}
+        <li>책이 없습니다.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

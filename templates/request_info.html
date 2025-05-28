@@ -1,0 +1,20 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2>🔍 request 객체 정보</h2>
+<p><strong>요청 방식:</strong> {{ method }}</p>
+<p><strong>전체 URL:</strong> {{ full_url }}</p>
+<p><strong>요청 경로:</strong> {{ path }}</p>
+<p><strong>클라이언트 IP:</strong> {{ client_ip }}</p>
+<p><strong>User-Agent:</strong> {{ user_agent }}</p>
+<p><strong>로그인 여부:</strong> {{ is_logged_in }}</p>
+{% if is_logged_in %}
+<p>사용자: {{ user }}</p>
+{% endif %}
+<h3>🧾 GET 요청</h3>
+<pre>{{ get_data }}</pre>
+<h3>🧾 POST 요청</h3>
+<pre>{{ post_data }}</pre>
+<h3>📦 세션 값</h3>
+<p>{{ session_value }}</p>
+{% endblock %}

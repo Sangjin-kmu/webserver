@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>➕ 책 등록</h2>
+
+{% if not_logged_in %}
+  <p style="color:red;">책을 등록하려면 먼저 <a href="/login/">로그인</a> 해주세요.</p>
+{% else %}
+  <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">등록</button>
+  </form>
+{% endif %}
+
+{% endblock %}

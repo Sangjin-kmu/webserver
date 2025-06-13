@@ -37,10 +37,32 @@ class BookForm(forms.ModelForm):
         model = Book
         fields = ['title', 'author', 'image', 'description', 'published_date', 'isbn', 'category']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'border p-2 rounded w-full'}),
-            'author': forms.TextInput(attrs={'class': 'border p-2 rounded w-full'}),
-            'description': forms.Textarea(attrs={'class': 'border p-2 rounded w-full', 'rows': 4}),
-            'published_date': forms.DateInput(attrs={'type': 'date', 'class': 'border p-2 rounded'}),
-            'isbn': forms.TextInput(attrs={'class': 'border p-2 rounded w-full'}),
-            'category': forms.TextInput(attrs={'class': 'border p-2 rounded w-full'}),
+            'title': forms.TextInput(attrs={
+                'placeholder': '제목 입력',
+                'class': 'w-full px-3 py-2 border border-gray-300 rounded bg-white'
+            }),
+            'author': forms.TextInput(attrs={
+                'placeholder': '저자 입력',
+                'class': 'w-full px-3 py-2 border border-gray-300 rounded bg-white'
+            }),
+            'image': forms.ClearableFileInput(attrs={
+                'class': 'block w-full text-sm text-gray-700 border border-gray-300 rounded bg-white file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-blue-600 file:text-white hover:file:bg-blue-700'
+            }),
+            'description': forms.Textarea(attrs={
+                'placeholder': '책 설명 입력',
+                'class': 'w-full px-3 py-2 border border-gray-300 rounded bg-white',
+                'rows': 4
+            }),
+            'published_date': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'w-full px-3 py-2 border border-gray-300 rounded bg-white'
+            }),
+            'isbn': forms.TextInput(attrs={
+                'placeholder': 'ISBN 입력',
+                'class': 'w-full px-3 py-2 border border-gray-300 rounded bg-white'
+            }),
+            'category': forms.TextInput(attrs={
+                'placeholder': '카테고리 입력',
+                'class': 'w-full px-3 py-2 border border-gray-300 rounded bg-white'
+            }),
         }

@@ -2,6 +2,8 @@
 from django.contrib import admin
 from django.urls import path
 from common import views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -14,3 +16,5 @@ urlpatterns = [
     path('signup/', views.signup_view, name='signup'),
     path('book/<int:book_id>/', views.book_detail, name='book_detail'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

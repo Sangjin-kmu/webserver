@@ -1,19 +1,16 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .models import Book, Comment, Rating
-from django import forms
-from django.shortcuts import get_object_or_404
-from .forms import CommentForm, RatingForm
+from .forms import CommentForm, RatingForm, BookForm
 
-# 조회수, 댓글, 별점 기능 포함
-
+# ---------- 책 상세 ----------
 def book_detail(request, book_id):
     book = get_object_or_404(Book, id=book_id)
 
-    # 세션에서 조회 플래그 확인
+    # 조회수 증가 세션 처리
     viewed_flag = f'viewed_book_{book_id}'
     if request.method == "GET" and not request.session.get(viewed_flag):
         book.increase_views()
@@ -59,14 +56,7 @@ def book_detail(request, book_id):
     return render(request, 'book_detail.html', context)
 
 
-# ---------- Book 등록 폼 ----------
-class BookForm(forms.ModelForm):
-    class Meta:
-        model = Book
-        fields = ['title', 'author']
-
-
-# ---------- 책 목록/추가 ----------
+# ---------- 책 목록 ----------
 def book_list(request):
     keyword = request.GET.get('q', '')
     order = request.GET.get('order', '')
@@ -77,21 +67,25 @@ def book_list(request):
         books = books.order_by('title')
     return render(request, 'book_list.html', {'books': books, 'keyword': keyword, 'order': order})
 
+
+# ✅ ---------- 책 등록 ----------
 def book_add(request):
     if not request.user.is_authenticated:
         return render(request, 'book_add.html', {'not_logged_in': True})
 
     if request.method == "POST":
-        form = BookForm(request.POST)
+        form = BookForm(request.POST, request.FILES)  # ✅ 이미지 업로드 처리
         if form.is_valid():
             form.save()
+            print("✅ 저장된 book 객체:", Book)
+            print("📷 이미지 경로:", Book.image)
             return redirect('/')
     else:
         form = BookForm()
     return render(request, 'book_add.html', {'form': form})
 
 
-# ---------- 로그인 관련 ----------
+# ---------- 로그인 ----------
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -104,27 +98,30 @@ def login_view(request):
             messages.error(request, '아이디 또는 비밀번호가 올바르지 않습니다.')
     return render(request, 'login.html')
 
+
 @login_required
 def home_view(request):
     return render(request, 'home.html', {'user': request.user})
 
+
 def logout_view(request):
     logout(request)
     return redirect('login')
+
 
 def signup_view(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # 가입 후 자동 로그인
+            login(request, user)
             return redirect('home')
     else:
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
 
-# ---------- request info ----------
+# ---------- 요청 정보 ----------
 def request_info_view(request):
     context = {
         'method': request.method,

@@ -1,12 +1,62 @@
-
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
-from .models import Book
+from .models import Book, Comment, Rating
 from django import forms
+from django.shortcuts import get_object_or_404
+from .forms import CommentForm, RatingForm
 
+# 조회수, 댓글, 별점 기능 포함
+
+def book_detail(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+
+    # 세션에서 조회 플래그 확인
+    viewed_flag = f'viewed_book_{book_id}'
+    if request.method == "GET" and not request.session.get(viewed_flag):
+        book.increase_views()
+        request.session[viewed_flag] = True
+
+    comments = book.comments.all().order_by('-created_at')
+    form = CommentForm()
+    rating_form = None
+    user_rating = None
+
+    if request.user.is_authenticated:
+        user_rating = Rating.objects.filter(book=book, user=request.user).first()
+
+        if request.method == "POST":
+            if 'content' in request.POST:
+                form = CommentForm(request.POST)
+                if form.is_valid():
+                    comment = form.save(commit=False)
+                    comment.book = book
+                    comment.user = request.user
+                    comment.save()
+                    return redirect('book_detail', book_id=book.id)
+
+            elif 'score' in request.POST:
+                rating_form = RatingForm(request.POST)
+                if rating_form.is_valid() and not user_rating:
+                    rating = rating_form.save(commit=False)
+                    rating.book = book
+                    rating.user = request.user
+                    rating.save()
+                    return redirect('book_detail', book_id=book.id)
+        else:
+            rating_form = RatingForm()
+
+    context = {
+        'book': book,
+        'form': form,
+        'comments': comments,
+        'avg_rating': book.get_average_rating(),
+        'user_rating': user_rating,
+        'rating_form': rating_form,
+    }
+    return render(request, 'book_detail.html', context)
 
 
 # ---------- Book 등록 폼 ----------
@@ -14,6 +64,7 @@ class BookForm(forms.ModelForm):
     class Meta:
         model = Book
         fields = ['title', 'author']
+
 
 # ---------- 책 목록/추가 ----------
 def book_list(request):
